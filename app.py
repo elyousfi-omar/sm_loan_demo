@@ -75,8 +75,6 @@ if account_number and desirable_loan > 0:
         else:
             st.success(f"Congrats! You are able to get a ${desirable_loan} loan. For more information, please contact an agent with this id: {special_id}")
 
-        st.success(f"Your Standing: **{standing.upper()}**")
-
         with st.expander("Show my transactions"):
             st.dataframe(user_data[["acquirer_reference_number", "transaction_type", "transaction_amount", "transaction_currency_code", "merchant_category_code", "card_acceptor_id", "merchant_name", "transaction_date"]].sort_values(by="transaction_date", ascending=False).reset_index(drop=True), use_container_width=True)
     else:
