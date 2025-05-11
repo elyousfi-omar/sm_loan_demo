@@ -23,10 +23,10 @@ desirable_loan = st.number_input("Enter Desirable Loan Amount", min_value=0, ste
 
 if account_number and desirable_loan > 0:
     special_id = uuid.uuid1()
-    user_data = all_transactions[all_transactions['primary_account_number'].astype(str) == account_number]
-    st.write(f"Welcome {user_data['cardholder_name'].values[0]}")
     user_row = user_summary[user_summary['primary_account_number'].astype(str) == account_number]
     if not user_row.empty:
+        user_data = all_transactions[all_transactions['primary_account_number'].astype(str) == account_number]
+        st.write(f"Welcome {user_data['cardholder_name'].values[0]}")
         standing = user_row['predicted_standing'].values[0]
         if standing.upper() == 'LOW' and desirable_loan > 2000:
             st.warning(f"You won't be able to get a loan of ${desirable_loan}. For more details, please contact an agent with this id: {special_id}")
