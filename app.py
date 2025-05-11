@@ -22,8 +22,10 @@ st.badge("New")
 
 account_number = st.text_input("Enter Primary Account Number", "")
 desirable_loan = st.number_input("Enter Desirable Loan Amount", min_value=0, step=1000, format="%d")
+
 if desirable_loan < 100:
     st.warning("We accept loans starting from $100. Please enter a valid amount.")
+    st.stop()
 if account_number and desirable_loan > 0:
     special_id = uuid.uuid1()
     user_row = user_summary[user_summary['primary_account_number'].astype(str) == account_number]
