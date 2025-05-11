@@ -18,10 +18,42 @@ def load_transactions_data():
 user_summary = load_summary_data()
 all_transactions = load_transactions_data()
 
+# st.logo("data/logo.png")
 st.badge("New")
 
-account_number = st.text_input("Enter Primary Account Number", "")
-desirable_loan = st.number_input("Enter Desirable Loan Amount", min_value=0, step=1000, format="%d")
+try:
+    st.markdown(
+    """
+    <style>
+        section[data-testid="stSidebar"] {
+            width: 350px !important; # Set the width to your desired value
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+    )
+except:
+    pass
+
+with st.sidebar:
+    with st.spinner("Loading..."):
+        st.image("data/logo.png", width=200)
+        st.title("AI Loan Assessment")
+        st.markdown("This app helps you check your account standing and loan eligibility.")
+        st.markdown("##")
+        st.markdown("### Instructions")
+        st.markdown("1. Enter your Primary Account Number.")
+        st.markdown("2. Enter the desired loan amount.")
+        st.markdown("3. Click on 'Check Standing' to see your account status.")
+        st.markdown("##")
+        st.markdown("### Disclaimer")
+        st.markdown("This is a demo application and does not represent real data.")
+    st.chat_input(placeholder="Ask me about your account", accept_file=True)
+
+with st.form("Loan form"):
+    account_number = st.text_input("Enter Primary Account Number", "")
+    desirable_loan = st.number_input("Enter Desirable Loan Amount", min_value=0, step=1000, format="%d")
+    st.form_submit_button("Check Standing")
 
 if desirable_loan < 100:
     st.warning("We accept loans starting from $100. Please enter a valid amount.")
