@@ -18,7 +18,7 @@ def load_transactions_data():
 user_summary = load_summary_data()
 all_transactions = load_transactions_data()
 
-st.badge("New", label="Client Standing Checker", color="blue")
+st.badge("New")
 
 account_number = st.text_input("Enter Primary Account Number", "")
 desirable_loan = st.number_input("Enter Desirable Loan Amount", min_value=0, step=1000, format="%d")
