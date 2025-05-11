@@ -5,7 +5,6 @@ import uuid
 st.set_page_config(
     page_title="Client Standing Checker",
     page_icon="🏅",
-    layout="wide",
 )
 
 @st.cache_data
@@ -48,6 +47,8 @@ with st.sidebar:
         st.markdown("##")
         st.markdown("### Disclaimer")
         st.markdown("This is a demo application and does not represent real data.")
+        st.markdown("##")
+        st.markdown("Data is randomly generated using Faker https://github.com/joke2k/faker")
     st.chat_input(placeholder="Ask me about your account", accept_file=True)
 
 with st.form("Loan form"):
